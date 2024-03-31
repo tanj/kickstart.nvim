@@ -164,15 +164,28 @@ vim.opt.scrolloff = 10
 -- Have LSP diagnostics always show where the message is coming from
 vim.diagnostic.config {
   virtual_text = {
-    source = 'always',
+    source = true, -- or "if_many"
   },
   float = {
-    source = 'always',
+    source = true, -- or "if_many"
   },
 }
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
+
+-- Disable `ex mode`
+vim.keymap.set('n', 'Q', '<nop>')
+
+-- drag lines up or down in visual mode
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+
+-- copy/paste from OS clipboard with <leader>p/y
+vim.keymap.set({ 'n', 'x' }, '<leader>p', [["+p]])
+vim.keymap.set('n', '<leader>P', [["+P]])
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
+vim.keymap.set('n', '<leader>Y', [["+Y]])
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true

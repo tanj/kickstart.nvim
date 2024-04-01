@@ -10,6 +10,7 @@ local M = {
 
     -- Setup orgmode
     require('orgmode').setup {
+      org_adapt_indentation = true,
       org_agenda_files = '~/Dropbox/org/*',
       org_default_notes_file = '~/Dropbox/org/refile.org',
       org_todo_keywords = { 'TODO(t)', 'WAITING(w)', 'NEXT(n)', '|', 'DONE(d)', 'CANCELLED(c)', 'DEFERRED(f)' },
@@ -41,18 +42,27 @@ local M = {
         },
         j = {
           description = 'Journal',
-          template = '**** %<%H:%M>: %? :%^{Tag}:\n   %t',
+          template = '**** %<%H:%M>: %? :%^{Tag}:\n     %t',
           datetree = true,
           target = '~/Dropbox/org/journal.org',
         },
         p = {
           description = 'PowerCore',
-          template = '**** %<%H:%M>: %? :%^{Tag}:\n   %t',
+          template = '**** %<%H:%M>: %? :%^{Tag}:\n     %t',
           datetree = true,
           target = '~/Dropbox/org/powercore.org',
         },
       },
     }
+    vim.api.nvim_create_autocmd('FileType', {
+      pattern = 'org',
+      callback = function()
+        vim.keymap.set('i', '<S-CR>', '<cmd>lua require("orgmode").action("org_mappings.meta_return")<CR>', {
+          silent = true,
+          buffer = true,
+        })
+      end,
+    })
   end,
 }
 return M

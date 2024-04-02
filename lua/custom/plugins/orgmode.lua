@@ -37,7 +37,7 @@ local M = {
       org_capture_templates = {
         t = {
           description = 'Task',
-          template = '* TODO %? $^g',
+          template = '* TODO %? :%^{Tag}:',
           target = '~/Dropbox/org/gtd.org',
         },
         j = {

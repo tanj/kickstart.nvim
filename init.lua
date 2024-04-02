@@ -163,9 +163,10 @@ vim.opt.scrolloff = 10
 
 -- Have LSP diagnostics always show where the message is coming from
 vim.diagnostic.config {
-  virtual_text = {
-    source = true, -- or "if_many"
-  },
+  -- virtual_text = {
+  --   source = true, -- or "if_many"
+  -- },
+  virtual_text = false,
   float = {
     source = true, -- or "if_many"
   },
@@ -653,7 +654,7 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
+        python = { 'isort', 'ruff_format' },
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.

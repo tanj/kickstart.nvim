@@ -16,4 +16,7 @@ local M = {
   },
 }
 
-return M
+-- return M
+-- Turning it off since orgmode works pretty well and luarocks is causing
+-- issues in windows. Leaving this here incase I want to look at it again.
+return {}

@@ -5,10 +5,6 @@ local M = {
   },
   event = 'VeryLazy',
   config = function()
-    -- Load treesitter grammar for org
-    require('orgmode').setup_ts_grammar()
-
-    -- Setup orgmode
     require('orgmode').setup {
       org_adapt_indentation = true,
       org_agenda_files = '~/Dropbox/org/*',

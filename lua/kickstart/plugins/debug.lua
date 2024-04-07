@@ -23,6 +23,7 @@ return {
 
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
+    'jbyuki/one-small-step-for-vimkind',
   },
   config = function()
     local dap = require 'dap'

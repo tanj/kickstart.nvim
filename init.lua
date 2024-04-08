@@ -606,6 +606,19 @@ require('lazy').setup({
             },
           },
         },
+        ltex = {
+          settings = {
+            ltex = {
+              language = {
+                'en_US',
+                'en_GB',
+              },
+            },
+          },
+          on_attach = function(client, bufnr)
+            require('ltex-utils').on_attach(bufnr)
+          end,
+        },
       }
 
       -- Ensure the servers and tools above are installed

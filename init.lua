@@ -93,7 +93,7 @@ vim.g.maplocalleader = ' '
 require 'rocks'
 -- work around shell launching
 -- vim.opt.shell = '/usr/bin/bash'
-if not vim.fn.has 'macunix' then
+if 0 == vim.fn.has 'macunix' then
   vim.opt.shell = 'cmd.exe'
 end
 -- vim.opt.shell = 'c:/Program Files/Git/usr/bin/bash.exe'

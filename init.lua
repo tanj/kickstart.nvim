@@ -385,6 +385,10 @@ require('lazy').setup({
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
         --   },
         -- },
+        defaults = {
+          -- Disabling preview because it keeps crashing on my lately
+          preview = false,
+        },
         -- pickers = {}
         extensions = {
           ['ui-select'] = {

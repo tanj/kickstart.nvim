@@ -59,6 +59,16 @@ local M = {
         })
       end,
     })
+    -- Global jump to files mappings
+    vim.keymap.set('n', '<leader>ojj', function()
+      vim.cmd.edit '~/Dropbox/org/journal.org'
+    end, { desc = 'Open [j]ournal.org' })
+    vim.keymap.set('n', '<leader>ojp', function()
+      vim.cmd.edit '~/Dropbox/org/powercore.org'
+    end, { desc = 'Open [p]owercore.org' })
+    vim.keymap.set('n', '<leader>ojb', function()
+      vim.cmd.edit '~/Dropbox/org/birthday-greetings.org'
+    end, { desc = 'Open [b]irthay-greetings.org' })
   end,
 }
 return M

@@ -3,7 +3,8 @@
 local M = {
   'stevearc/gkeep.nvim',
   build = 'UpdateRemotePlugins',
-  opts = {},
+  -- no opts passed to this plugin
+  -- opts = {},
   -- Optional dependencies
   dependencies = { 'nvim-tree/nvim-web-devicons' },
 }

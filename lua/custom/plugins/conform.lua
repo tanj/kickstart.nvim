@@ -18,7 +18,8 @@ end, {
 
 local M = {
 
-  'stevearc/conform.nvim',
+  'tanj/conform.nvim',
+    branch = 'dos2unix',
   opts = {
     notify_on_error = true,
     format_on_save = function(bufnr)

@@ -19,7 +19,7 @@ end, {
 local M = {
 
   'tanj/conform.nvim',
-    branch = 'dos2unix',
+  branch = 'dos2unix',
   opts = {
     notify_on_error = true,
     format_on_save = function(bufnr)
@@ -31,7 +31,7 @@ local M = {
       -- languages here or re-enable it for the disabled ones.
       local disable_filetypes = { c = true, cpp = true }
       return {
-        timeout_ms = 1500,
+        timeout_ms = 3000,
         lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
       }
     end,

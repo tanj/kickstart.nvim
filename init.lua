@@ -589,7 +589,11 @@ require('lazy').setup({
         gopls = {},
         -- templ = {},
         -- Python options
-        basedpyright = {},
+        basedpyright = {
+          on_attach = function(client, bufnr)
+            client.server_capabilities.renameProvider = false
+          end,
+        },
         jedi_language_server = {},
         ruff_lsp = {},
         --

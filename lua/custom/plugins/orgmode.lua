@@ -57,6 +57,10 @@ local M = {
           silent = true,
           buffer = true,
         })
+        vim.cmd 'setlocal textwidth=79'
+        vim.cmd 'setlocal tabstop=2'
+        vim.cmd 'setlocal shiftwidth=2'
+        vim.cmd 'setlocal expandtab'
       end,
     })
     -- Global jump to files mappings

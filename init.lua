@@ -391,7 +391,8 @@ require('lazy').setup({
         -- },
         defaults = {
           -- Disabling preview because it keeps crashing on my lately
-          preview = false,
+          path_display = { 'smart' },
+          -- preview = false,
         },
         -- pickers = {}
         extensions = {

@@ -18,8 +18,8 @@ end, {
 
 local M = {
 
-  'tanj/conform.nvim',
-  branch = 'dos2unix',
+  'stevearc/conform.nvim',
+  branch = 'master',
   opts = {
     notify_on_error = true,
     format_on_save = function(bufnr)
@@ -38,7 +38,7 @@ local M = {
     formatters_by_ft = {
       lua = { 'stylua' },
       -- Conform can also run multiple formatters sequentially
-      python = { 'isort', 'dos2unix', 'ruff_format' },
+      python = { 'isort', 'ruff_format' },
       --
       -- You can use a sub-list to tell conform to run *until* a formatter
       -- is found.

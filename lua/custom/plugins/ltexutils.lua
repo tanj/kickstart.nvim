@@ -1,5 +1,7 @@
 local M = {
-  'jhofscheier/ltex-utils.nvim',
+  -- 'jhofscheier/ltex-utils.nvim',
+  'tanj/ltex-utils.nvim',
+  branch = 'fix-telescope-preview-load-error',
   dependencies = {
     'neovim/nvim-lspconfig',
     'nvim-telescope/telescope.nvim',

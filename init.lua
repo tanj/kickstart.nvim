@@ -638,6 +638,7 @@ require('lazy').setup({
             require('ltex-utils').on_attach(bufnr)
           end,
         },
+        zls = {},
       }
 
       -- Ensure the servers and tools above are installed

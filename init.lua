@@ -934,7 +934,6 @@ require('lazy').setup({
         'lua',
         'luadoc',
         'markdown',
-        'org',
         'python',
         'rst',
         'sql',

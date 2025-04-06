@@ -345,6 +345,7 @@ require('lazy').setup({
       }
     end,
   },
+  { 'xiyaowong/transparent.nvim' },
 
   -- NOTE: Plugins can specify dependencies.
   --

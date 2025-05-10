@@ -654,7 +654,7 @@ require('lazy').setup({
             },
           },
         },
-        ltex = {
+        ltex_plus = {
           settings = {
             ltex = {
               language = {

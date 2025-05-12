@@ -940,6 +940,11 @@ require('lazy').setup({
         'vim',
         'vimdoc',
         'zig',
+        'superhtml',
+        'ziggy',
+        'ziggy_schema',
+        -- 'supermd',
+        -- 'supermd_inline',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,

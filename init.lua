@@ -487,6 +487,10 @@ require('lazy').setup({
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
       { 'folke/neodev.nvim', opts = {} },
+      -- `sqls` configures and provides commands for SQL LS
+      {
+        'sqls-server/sqls.vim',
+      },
     },
     config = function()
       -- Brief aside: **What is LSP?**
@@ -632,7 +636,11 @@ require('lazy').setup({
         biome = {},
         --
         -- SQL
-        sqlls = {},
+        sqls = {
+          -- on_attach = function(client, bufnr)
+          --   require('sqls').on_attach(client, bufnr) -- require sqls.nvim
+          -- end,
+        },
         -- Super HTML
         -- superhtml = {
         --   no_install = true,

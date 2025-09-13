@@ -419,6 +419,7 @@ require('lazy').setup({
         { '<leader>u_', hidden = true },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>w_', hidden = true },
+        { 'gr', group = 'LSP [R]esources' },
       },
     },
   },

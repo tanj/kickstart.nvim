@@ -45,6 +45,8 @@ local M = {
       -- javascript = { { "prettierd", "prettier" } },
       html = { 'superhtml' },
       htmlangular = { 'prettier' },
+      json = { 'prettier' },
+      json5 = { 'prettier' },
     },
   },
 }

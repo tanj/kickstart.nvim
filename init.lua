@@ -1210,6 +1210,8 @@ require('lazy').setup({
           shtml = 'superhtml',
           ziggy = 'ziggy',
           ['ziggy-schema'] = 'ziggy_schema',
+          struct = 'st',
+          enum = 'st',
         },
       }
     end,

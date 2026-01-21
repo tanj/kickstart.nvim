@@ -781,12 +781,14 @@ require('lazy').setup({
         gopls = {},
         -- templ = {},
         -- Python options
-        basedpyright = {
-          on_attach = function(client, bufnr)
-            client.server_capabilities.renameProvider = false
-          end,
-        },
-        jedi_language_server = {},
+        -- basedpyright = {
+        --   on_attach = function(client, bufnr)
+        --     client.server_capabilities.renameProvider = false
+        --   end,
+        --   capabilities = { renameProvider = false },
+        -- },
+        -- jedi_language_server = {},
+        zuban = {},
         ruff = {},
         --
         rust_analyzer = {},

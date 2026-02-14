@@ -7,8 +7,8 @@ local M = {
   config = function()
     require('orgmode').setup {
       org_adapt_indentation = true,
-      org_agenda_files = '~/Dropbox/org/*',
-      org_default_notes_file = '~/Dropbox/org/refile.org',
+      org_agenda_files = '~/org/*',
+      org_default_notes_file = '~/org/refile.org',
       org_todo_keywords = { 'TODO(t)', 'WAITING(w)', 'NEXT(n)', '|', 'DONE(d)', 'CANCELLED(c)', 'DEFERRED(f)' },
       org_agenda_skip_scheduled_if_done = true,
       org_agenda_skip_deadline_if_done = true,
@@ -34,19 +34,19 @@ local M = {
         t = {
           description = 'Task',
           template = '* TODO %? :%^{Tag}:',
-          target = '~/Dropbox/org/gtd.org',
+          target = '~/org/gtd.org',
         },
         j = {
           description = 'Journal',
           template = '**** %<%H:%M>: %? :%^{Tag}:\n     %t',
           datetree = true,
-          target = '~/Dropbox/org/journal.org',
+          target = '~/org/journal.org',
         },
         p = {
           description = 'PowerCore',
           template = '**** %<%H:%M>: %? :%^{Tag}:\n     %t',
           datetree = true,
-          target = '~/Dropbox/org/powercore.org',
+          target = '~/org/powercore.org',
         },
       },
     }
@@ -65,13 +65,13 @@ local M = {
     })
     -- Global jump to files mappings
     vim.keymap.set('n', '<leader>ojj', function()
-      vim.cmd.edit '~/Dropbox/org/journal.org'
+      vim.cmd.edit '~/org/journal.org'
     end, { desc = 'Open [j]ournal.org' })
     vim.keymap.set('n', '<leader>ojp', function()
-      vim.cmd.edit '~/Dropbox/org/powercore.org'
+      vim.cmd.edit '~/org/powercore.org'
     end, { desc = 'Open [p]owercore.org' })
     vim.keymap.set('n', '<leader>ojb', function()
-      vim.cmd.edit '~/Dropbox/org/birthday-greetings.org'
+      vim.cmd.edit '~/org/birthday-greetings.org'
     end, { desc = 'Open [b]irthay-greetings.org' })
   end,
 }

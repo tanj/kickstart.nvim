@@ -494,7 +494,7 @@ require('lazy').setup({
         --   },
         -- },
         defaults = {
-          -- Disabling preview because it keeps crashing on my lately
+          -- Disabling preview because it keeps crashing on me lately
           path_display = { 'smart' },
           -- preview = false,
         },

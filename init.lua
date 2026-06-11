@@ -194,6 +194,18 @@ vim.diagnostic.config {
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
+vim.keymap.set('n', '<leader>d', function()
+  -- Get the full path of the current file
+  local current_file = vim.api.nvim_buf_get_name(0)
+
+  -- If the buffer has a path, open Oil in its parent directory
+  if current_file ~= '' then
+    require('oil').open(vim.fn.fnamemodify(current_file, ':h'))
+  else
+    -- Fallback to opening Oil in the current working directory if it's an un-saved buffer
+    require('oil').open()
+  end
+end, { desc = 'Open Oil in current file directory' })
 
 -- Disable `ex mode`
 vim.keymap.set('n', 'Q', '<nop>')

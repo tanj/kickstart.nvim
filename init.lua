@@ -846,9 +846,11 @@ require('lazy').setup({
         --
         -- SQL
         sqls = {
-          -- on_attach = function(client, bufnr)
-          --   require('sqls').on_attach(client, bufnr) -- require sqls.nvim
-          -- end,
+          on_attach = function(client, bufnr)
+            require('sqls').on_attach(client, bufnr) -- require sqls.nvim
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+          end,
         },
         -- Super HTML
         -- superhtml = {

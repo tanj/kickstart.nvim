@@ -48,6 +48,7 @@ local M = {
       htmlangular = { 'prettier' },
       json = { 'prettier' },
       json5 = { 'prettier' },
+      sql = { 'sqlfluff' },
     },
   },
 }

@@ -194,7 +194,7 @@ vim.diagnostic.config {
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
-vim.keymap.set('n', '<leader>d', function()
+vim.keymap.set('n', '<leader>f', function()
   -- Get the full path of the current file
   local current_file = vim.api.nvim_buf_get_name(0)
 
@@ -660,6 +660,30 @@ require('lazy').setup({
 
           -- Find references for the word under your cursor.
           map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+          -- Restart LSP
+          map('grR', function()
+            -- Get active clients using the current 0.10+ standard API
+            local clients = vim.lsp.get_clients { bufnr = 0 }
+
+            if #clients == 0 then
+              vim.notify('No active LSP clients to restart', vim.log.levels.WARN)
+              return
+            end
+
+            for _, client in ipairs(clients) do
+              -- Use the client object's built-in stop method if available,
+              -- otherwise fallback to the global stop function
+              if client.stop then
+                client.stop()
+              else
+                vim.lsp.stop_client(client)
+              end
+            end
+
+            -- Force a buffer reload to trigger the LSP attach autocommands
+            vim.cmd 'edit'
+            vim.notify('LSP Engine Reset', vim.log.levels.INFO)
+          end, '[R]estart LSP')
 
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.

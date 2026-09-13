@@ -49,6 +49,7 @@ local M = {
       json = { 'prettier' },
       json5 = { 'prettier' },
       sql = { 'sqlfluff' },
+      php = { 'mago_format' },
     },
   },
 }

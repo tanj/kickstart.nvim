@@ -229,6 +229,22 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+-- Jump to tag definition under cursor (Ctags replacement for <C-]>)
+vim.keymap.set('n', '<leader>ct', function()
+  local word = vim.fn.expand '<cword>'
+  if word ~= '' then
+    vim.cmd('tag ' .. word)
+  end
+end, { desc = '[C]tags Jump to [T]ag' })
+-- Select from multiple matching tags
+vim.keymap.set('n', '<leader>cs', function()
+  local word = vim.fn.expand '<cword>'
+  if word ~= '' then
+    vim.cmd('tselect ' .. word)
+  end
+end, { desc = '[C]tags [S]elect Tag' })
+-- Jump back in the tag stack (Ctags replacement for <C-t>)
+vim.keymap.set('n', '<leader>cb', '<cmd>pop<CR>', { desc = '[C]tags Jump [B]ack' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -999,6 +1015,8 @@ require('lazy').setup({
         opts = {},
       },
       'folke/lazydev.nvim',
+      'saghen/blink.compat',
+      'quangnguyen30192/cmp-nvim-tags',
     },
     --- @module 'blink.cmp'
     --- @type blink.cmp.Config
@@ -1043,9 +1061,14 @@ require('lazy').setup({
         documentation = { auto_show = false, auto_show_delay_ms = 500 },
       },
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'lazydev' },
+        default = { 'lsp', 'path', 'snippets', 'lazydev', 'tags' },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+          tags = {
+            name = 'tags',
+            module = 'blink.compat.source',
+            score_offset = 50,
+          },
         },
       },
       snippets = { preset = 'luasnip' },

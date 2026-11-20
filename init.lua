@@ -834,6 +834,7 @@ require('lazy').setup({
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+      ---@type table<string, vim.lsp.Config>
       local servers = {
         csharp_ls = {},
         -- clangd = {},
@@ -847,7 +848,8 @@ require('lazy').setup({
         --   capabilities = { renameProvider = false },
         -- },
         -- jedi_language_server = {},
-        zuban = {},
+        -- zuban = {},
+        basedpyright = {},
         ruff = {},
         --
         rust_analyzer = {},
@@ -890,11 +892,23 @@ require('lazy').setup({
           },
         },
         ltex_plus = {
+          -- Connect to the systemd TCP daemon if port 48200 is listening;
+          -- otherwise fall back to launching a local stdio process.
+          -- cmd = (function()
+          --   vim.fn.system "ss -tln | grep -q ':48200 '"
+          --   if vim.v.shell_error == 0 then
+          --     return vim.lsp.rpc.connect('127.0.0.1', 48200)
+          --   end
+          --   return nil -- nil lets lspconfig use its default stdio cmd
+          -- end)(),
+          cmd = vim.lsp.rpc.connect('127.0.0.1', 48200),
+          -- Optional: prevent attaching to short-lived gitcommit buffers
+          -- filetypes = { 'markdown', 'org', 'tex', 'restructuredtext' },
           settings = {
             ltex = {
               language = {
-                'en_US',
-                'en_GB',
+                'en-US',
+                'en-GB',
               },
             },
           },
@@ -927,17 +941,11 @@ require('lazy').setup({
       require('mason-lspconfig').setup {
         ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
         automatic_installation = false,
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
-          end,
-        },
       }
+
+      for _name, _settings in pairs(servers) do
+        vim.lsp.config(_name, _settings)
+      end
 
       -- Manual Zine setup
       vim.api.nvim_create_autocmd('FileType', {

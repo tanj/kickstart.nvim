@@ -618,11 +618,6 @@ require('lazy').setup({
 
       -- Allows extra capabilities provided by blink.cmp
       'saghen/blink.cmp',
-
-      -- `sqls` configures and provides commands for SQL LS
-      {
-        'sqls-server/sqls.vim',
-      },
     },
     config = function()
       -- Brief aside: **What is LSP?**
@@ -862,14 +857,6 @@ require('lazy').setup({
         ts_ls = {},
         biome = {},
         --
-        -- SQL
-        sqls = {
-          on_attach = function(client, bufnr)
-            require('sqls').on_attach(client, bufnr) -- require sqls.nvim
-            client.server_capabilities.documentFormattingProvider = false
-            client.server_capabilities.documentRangeFormattingProvider = false
-          end,
-        },
         -- Super HTML
         -- superhtml = {
         --   no_install = true,

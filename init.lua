@@ -901,7 +901,8 @@ require('lazy').setup({
           --   end
           --   return nil -- nil lets lspconfig use its default stdio cmd
           -- end)(),
-          cmd = vim.lsp.rpc.connect('127.0.0.1', 48200),
+          -- cmd = vim.lsp.rpc.connect('127.0.0.1', 48200),
+          -- cmd = { 'lspmux', 'client', '--server-path', '/home/tanj/.local/share/nvim/mason/bin/ltex-ls-plus' },
           -- Optional: prevent attaching to short-lived gitcommit buffers
           -- filetypes = { 'markdown', 'org', 'tex', 'restructuredtext' },
           settings = {

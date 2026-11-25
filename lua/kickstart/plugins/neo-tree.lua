@@ -8,10 +8,16 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
     'MunifTanjim/nui.nvim',
+    -- 's1n7ax/nvim-window-picker',
   },
   lazy = false,
   keys = {
     { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    {
+      '<C-w>e',
+      '<cmd>Neotree focus filesystem<CR>',
+      desc = 'Focus Neo-tree filesystem',
+    },
   },
   opts = {
     filesystem = {

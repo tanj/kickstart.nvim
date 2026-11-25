@@ -2,11 +2,11 @@
 vim.filetype.add {
   extension = {
     st = 'st',
-    struct = 'struct',
-    gvl = 'gvl',
-    enum = 'enum',
-    itf = 'itf',
-    meth = 'meth',
+    struct = 'st',
+    gvl = 'st',
+    enum = 'st',
+    itf = 'st',
+    meth = 'st',
   },
 }
 
@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd('User', {
       },
       filetype = 'st',
     }
-    vim.treesitter.language.register('structured_text', { 'st', 'struct', 'gvl', 'enum', 'itf', 'meth' })
+    vim.treesitter.language.register('structured_text', { 'st' })
   end,
 })
 
